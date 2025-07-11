@@ -1,7 +1,11 @@
 import './App.css';
 import { useEffect } from 'react';
 import { ContextHolder, useAuth, useLoginWithRedirect, AdminPortal } from "@frontegg/react";
-import TenantDropdown from './TenantDropdown';
+import Navbar from './Navbar';
+// import TenantDropdown from './TenantDropdown';
+// import { Button, Grid } from '@mui/material';
+// import LogoutIcon from '@mui/icons-material/Logout';
+// import SettingsIcon from '@mui/icons-material/Settings';
 
 function App() {
   const { user, isAuthenticated } = useAuth();
@@ -18,29 +22,35 @@ function App() {
     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.href}`;
   };
 
-
   const openAdminPortal = () => {
     AdminPortal.show();
   };
+
 
   return (
 
     <div className="App">
       {isAuthenticated ? (
         <div>
+          <Navbar />
           <div>
             <img src={user?.profilePictureUrl ?? undefined} alt={user?.name} />
           </div>
           <div>
             <span>Logged in as: {user?.name}</span>
           </div>
-          <div>
-            <button onClick={openAdminPortal}>Settings</button>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'center', marginTop: '15px' }}>
+            {/* <div>
+              <Button variant="outlined" onClick={openAdminPortal} startIcon={<SettingsIcon />}>Settings</Button>
+            </div>
+            <TenantDropdown />
+            <div>
+              <Button variant="contained"
+                color="error"
+                startIcon={<LogoutIcon />}
+                onClick={() => logout()}>Logout</Button>
+            </div> */}
           </div>
-          <div>
-            <button onClick={() => logout()}>Click to logout</button>
-          </div>
-          <TenantDropdown />
         </div>
       ) : (
         <div>

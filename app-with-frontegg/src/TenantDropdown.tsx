@@ -3,7 +3,7 @@ import { useAuth, useAuthActions, useTenantsActions } from '@frontegg/react';
 import { useEffect } from 'react';
 
 
-export default function MuiDropdown() {
+export default function TenantDropdown() {
     const { switchTenant } = useAuthActions();
     const { loadTenants } = useTenantsActions();
     const { tenantsState } = useAuth();
@@ -20,14 +20,12 @@ export default function MuiDropdown() {
     };
 
     return (
-        <FormControl >
-            <InputLabel id="tenant-selction">Select Tenant</InputLabel>
+        <FormControl>
             <Select
-                labelId="tenant-selction"
                 id="tenant-select"
                 value={tenantsState.activeTenant?.tenantId}
-                label="Select Tenant"
                 onChange={handleSwitchTenant}
+                displayEmpty
             >
                 {tenants.map((option) => (
                     <MenuItem key={option.tenantId} value={option.tenantId}>
