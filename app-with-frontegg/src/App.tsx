@@ -14,7 +14,7 @@ function App() {
 
   const logout = () => {
     const baseUrl = ContextHolder.getContext().baseUrl;
-    window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location}`;
+    window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.href}`;
   };
 
   const openAdminPortal = () => {
