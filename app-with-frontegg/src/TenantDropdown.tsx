@@ -20,12 +20,13 @@ export default function TenantDropdown() {
     };
 
     return (
-        <FormControl>
+        <FormControl size="small" sx={{ minWidth: 120, m: 0 }}>
             <Select
                 id="tenant-select"
                 value={tenantsState.activeTenant?.tenantId}
                 onChange={handleSwitchTenant}
                 displayEmpty
+                sx={{ height: 36, fontSize: '0.95rem', padding: 0 }}
             >
                 {tenants.map((option) => (
                     <MenuItem key={option.tenantId} value={option.tenantId}>

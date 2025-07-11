@@ -1,4 +1,4 @@
-import { Box, CssBaseline, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Typography, Tooltip } from '@mui/material';
 import TenantDropdown from './TenantDropdown';
 import { AdminPortal, ContextHolder } from '@frontegg/react';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -26,15 +26,18 @@ function Navbar() {
                         >
                             Tamar's Application for Frontegg
                         </Typography>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'center' }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <TenantDropdown />
-                            <IconButton color="inherit" onClick={openAdminPortal} aria-label="settings">
-                                <SettingsIcon />
-                            </IconButton>
-                            <IconButton color="error" onClick={logout} aria-label="logout">
-                                <LogoutIcon />
-                            </IconButton>
-
+                            <Tooltip title="Settings" arrow>
+                                <IconButton color="inherit" onClick={openAdminPortal} aria-label="settings">
+                                    <SettingsIcon />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title="Logout" arrow>
+                                <IconButton color="error" onClick={logout} aria-label="logout">
+                                    <LogoutIcon />
+                                </IconButton>
+                            </Tooltip>
                         </Box>
                     </Toolbar>
                 </AppBar>
