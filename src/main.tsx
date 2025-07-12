@@ -1,10 +1,12 @@
+import "./index.css";
+
+import { FronteggProvider } from "@frontegg/react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-import { FronteggProvider } from "@frontegg/react";
+
+import App from "./App.tsx";
 import config from "./config.ts";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const contextOptions = {
   baseUrl: config.baseUrl,
@@ -33,7 +35,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <FronteggProvider
         contextOptions={contextOptions}
-        hostedLoginBox={true}
+        hostedLoginBox
         authOptions={authOptions}
       >
         <App />

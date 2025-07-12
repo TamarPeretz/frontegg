@@ -1,17 +1,18 @@
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Tooltip,
-} from "@mui/material";
-import TenantDropdown from "./TenantDropdown";
 import { AdminPortal, ContextHolder } from "@frontegg/react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
-function Navbar() {
+import TenantDropdown from "./TenantDropdown";
+
+const Navbar = () => {
   const logout = () => {
     const baseUrl = ContextHolder.getContext().baseUrl;
     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.href}`;
@@ -49,6 +50,6 @@ function Navbar() {
       </AppBar>
     </Box>
   );
-}
+};
 
 export default Navbar;

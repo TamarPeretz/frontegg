@@ -1,11 +1,13 @@
 import "./App.css";
-import { useEffect } from "react";
-import { useAuth, useLoginWithRedirect } from "@frontegg/react";
-import Navbar from "./Navbar";
-import classNames from "classnames";
-import config from "./config";
 
-function App() {
+import { useAuth, useLoginWithRedirect } from "@frontegg/react";
+import classNames from "classnames";
+import { useEffect } from "react";
+
+import config from "./config";
+import Navbar from "./Navbar";
+
+const App = () => {
   const { user, isAuthenticated } = useAuth();
   const loginWithRedirect = useLoginWithRedirect();
 
@@ -42,6 +44,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
