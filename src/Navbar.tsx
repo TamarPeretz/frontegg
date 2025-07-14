@@ -1,4 +1,4 @@
-import { AdminPortal, ContextHolder } from "@frontegg/react";
+import { AdminPortal, useAuthActions } from "@frontegg/react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
 import {
@@ -13,9 +13,10 @@ import {
 import TenantDropdown from "./TenantDropdown";
 
 const Navbar = () => {
-  const logout = () => {
-    const baseUrl = ContextHolder.getContext().baseUrl;
-    window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.href}`;
+  const { logout } = useAuthActions();
+
+  const logoutUser = () => {
+    logout(); 
   };
 
   const openAdminPortal = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Logout" arrow>
-              <IconButton color="error" onClick={logout} aria-label="logout">
+              <IconButton color="error" onClick={logoutUser} aria-label="logout">
                 <LogoutIcon />
               </IconButton>
             </Tooltip>
